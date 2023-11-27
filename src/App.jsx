@@ -61,15 +61,15 @@ const App = () => {
             <button> - </button> */}
           </section>
           <Person 
-          name = {'Rahul'}
-          lname = {"Babu"} 
-          age = {20}
+          name = 'Rahul'
+          lname = "Babu"
+          age = '20'
           />
          
          <Person 
-          name = {'suii'}
-          lname = {"hehe"} 
-          age = {10}
+          name = 'suii'
+          lname = "hehe"
+          age = '10'
           />
 
         </main>
