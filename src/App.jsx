@@ -1,27 +1,46 @@
 import "./App.css";
-// import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 const Person = (props) => {
-  return <>
-   <h1>
-     First Name : {props.name}
-   </h1>
-   <h1>
-    Last Name : {props.lname}
-   </h1>
-   <h1>
-    Age : {props.age}
-   </h1>
-   
-  
-  
-  </>;
+  return (
+    <>
+      <h1>First Name : {props.name}</h1>
+      <h1>Last Name : {props.lname}</h1>
+      <h1>Age : {props.age}</h1>
+    </>
+  );
 };
 
 const App = () => {
   const name = "Rahul";
   // const  isLoggedIn = true;
-  // const [counter ,setCounter ] = useState(0);
+  const [counter, setCounter] = useState(0);
+
+  const updateCounter = () => {
+    setCounter((prevCount) => {
+       return prevCount + 1;
+    });
+  };
+  const reduceCounter = () => {
+    setCounter((prevCount) => {
+      return prevCount -1;
+  });
+}
+
+
+//! shows alert when page is loaded
+//! useEffect is similar to watch and computed in vue
+// useEffect(()=>{
+//   alert("HOO")
+//! counter = 100; cannot update like this because its a part of react State  
+// })
+
+
+//! this code block means that whenever we change the counter  the code inside the block works
+useEffect(()=>{
+alert("Clicked")
+},[counter])  //! The dependency array [counter] indicates that the effect should run whenever the counter value changes.
+//!With this setup, the useEffect will be triggered whenever the counter value changes, showing the alert with "Clicked".
   return (
     <>
       <div>
@@ -51,27 +70,14 @@ const App = () => {
               //<.>  </>  this means an empty div
             }
 
-            {/* <h2>
-              Counter
-            </h2>
-            <button onClick={()=> setCounter()}> + </button>
-            <h1>
-              {counter}
-            </h1>
-            <button> - </button> */}
+            <h2>Counter</h2>
+            <button onClick={updateCounter}> + </button>
+            <h1>{counter}</h1>
+            <button onClick={reduceCounter}> - </button>
           </section>
-          <Person 
-          name = 'Rahul'
-          lname = "Babu"
-          age = {20}
-          />
-         
-         <Person 
-          name = 'suii'
-          lname = "hehe"
-          age = {10}
-          />
+          <Person name="Rahul" lname="Babu" age={20} />
 
+          <Person name="suii" lname="hehe" age={10} />
         </main>
       </div>
     </>
